@@ -1,39 +1,53 @@
-// // Declaring a variable
-// // Declare a variable and 
-// // console.log it.
+// Ternary Operators
+// let points = 40;
+// console.log(points > 100 ? 'gold' : 'silver')
 
-// let name = "Some value" // string
-// let number = 1 // number
-// let eligible = true // boolean
-// let person; // undefined
-// let anotherPerson = null // null
+// points = 110;
+// console.log(points > 100 ? 'gold' : 'silver')
 
 
-// // Create an object
-// person = {
-//   name: 'Zenish',
-//   age: 30,
-// }
+// Swapping Variables
+// let a = 'red'
+// let b = 'blue'
+// console.log(a,b)
 
-// person.address = "Sifal"
-// console.log(person)
+// let c = a
+// a = b
+// b = c
+// console.log(a,b)
 
 
-// let personNames = ['Henry', 'Tom', 'Jerry']
-// console.log(personNames[3])
+// Exercise #2
+// Define a variable loggedIn,
+// If it is true, call a function -> ternary operator
+// to greet the user (create the function as well)
+// If it is false, ask the user to log in
 
-// Declare a function named multiply
-// function multiply(a, b) {
-//   return a * b
-// }
+// Hint: 
+// Define variable loggedIn,
+// function greet -> console.log
+// Use ternary operator on loggedIn.
 
-// let multipliedNumber = multiply(5, 6)
-// console.log(multipliedNumber)
+let loggedIn = true
 
-// Function with a default parameter
-function square(a = 2) {
-  return a * a
+function greet(name) {
+  console.log(`Hello ${name}`)
 }
 
-let squaredNumber = square()
-console.log(squaredNumber)
+// ES6 function
+// Syntax - let || const varName = (params...) => {function definition}
+const es6Greet = (name) => console.log(`Hello ${name}`)
+
+console.log(loggedIn ? greet('User') : 'Please log in!')
+console.log(!loggedIn ? 'Please log in!' : greet('User'))
+
+// Run a for loop from 1-100
+// Print those specific numbers
+for(let i = 1; i <= 100; i++) {
+  console.log(i)
+}
+
+
+
+
+
