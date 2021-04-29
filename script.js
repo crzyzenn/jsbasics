@@ -1,306 +1,258 @@
-// //  For loop exercise 
-// // Print odd numbers between 1 and 10
-// for(let i = 1; i<=10; i++) {
-//   i%2 !== 0 && console.log(i)
-// }
+// // Traditional way
+// let radius = 1
+// let x = 1
+// let y = 1
 
-
-// //  For loop exercise 
-// // Print odd numbers between 1 and 10
-// let i = 1
-// while(i <= 10) {
-//   i%2 !== 0 && console.log(i)
-//   i++
-// }
-
-
-// // For..in example
-// // Used to iterate all the values of an object
-// const person = {
-//   name: 'Henry',
-//   age: 30,
-//   occupation: 'Actor'
-// }
-
-// // Key -> in every loop will be name, age, occupation and so on...
-// // While person[key] gives the value of that key
-// // Eg: in 1st iteration of this loop, key -> name so person['name'] -> Henry
-// for(let key in person) {
-//   console.log(key, person[key])
-// }
-
-
-// // For..of example
-// // Used to iterate all the values of an array
-// const fruits = ['Apple', 'Banana', 'Orange', 'Mango']
-
-// for(let fruit of fruits) {
-//   console.log(fruit)
-// }
-
-
-// // Write a function that takes two numbers and returns the maximum of the two. 
-// function max(a, b) {
-//   return a > b ? a : b
-// }
-
-// console.log(max(4,3))
-
-
-// // Write a function that takes two parameters, width and height and return if the device is in landscape or portrait mode.
-
-// function checkMode(width, height) {
-//   return width > height ? 'Screen is in landscape mode' : 'Screen is in portrait mode'
-// }
-
-// console.log(checkMode(600, 800))
-// console.log(checkMode(800, 600))
-
-
-// // Create a function that accepts a parameter - number
-// // Divisible by 3 -> Fizz
-// // Divisible by 5 -> Buzz
-// // Divisible by both 3 and 5 -> FizzBuzz
-// // Not divisible by 3 or 5 -> return input
-// // Not a number => ‘Not a number’
-
-// function fizzbuzz(number) {
-
-//   if(typeof number !== 'number') {
-//     console.log('Not a number') 
-//   }
-
-//   if(number % 3 === 0) {
-//     console.log('Fizz') 
-//   }
-  
-//   if(number % 5 === 0) {
-//     console.log('Buzz') 
-//   }
-  
-//   if(number % 3 === 0 && number % 5 === 0) {
-//     console.log('FizzBuzz') 
-//   }
-
-//   if(number % 3 !== 0 && number % 5 !== 0) {
-//     console.log(number) 
+// // Objects
+// let circle1 = {
+//   radius: 1,
+//   x: 1,
+//   y: 1,
+//   // If a function does not return anything,
+//   // the result is undefined
+//   draw: function() {
+//     console.log("Draw")
+//     // changes
+//   },
+//   move: function() {
+//     console.log("Draw")
 //   }
 // }
 
-// fizzbuzz(30)
-// fizzbuzz(5)
-// fizzbuzz(3)
-// fizzbuzz('10')
 
-
-// // Create a function that accepts an object,
-// // Show the key, value pair in console if the type of the value is a string
-// let car = {
-//   name: 'Merceds',
-//   make: 1997,
-//   engineType: '5 Stroke',
-//   variants: ['red', 'blue', 'green']
-// }
-
-// for(let key in car) {
-//   if(typeof car[key] !== 'string') continue; // Continue to next loop if not a string
-//   console.log(key, car[key])
-// }
-
-
-
-
-
-// In Class Code: 
-// 
-// Loops
-// We want to print numbers between 1 to 100
-// for(let num = 1; num <= 100; num++) {
-//   console.log(num)
-// }
-
-// Run a for loop between 1 to 10
-// Print the odd numbers
-// Result => 1, 3, 5, 7, 9
-
-// for(let num = 1; num <= 10; num++) {
-//   // num % 2 !== 0 && console.log(num)
-//   if(num % 2 !== 0) {
-//     console.log(num)
+// // Factory functions
+// function createCircle(x, y, radius) {
+//   // Static data
+//   return {
+//     radius: radius,
+//     x: x,
+//     y: y,
+//     // If a function does not return anything,
+//     // the result is undefined
+//     draw: function() {
+//       console.log("Draw")
+//       // changes
+//     },
+//     move: function() {
+//       console.log("Draw")
+//     }
 //   }
 // }
 
-// Same example to print odd numbers between 1 and 10
-// Using while loop
-// let i = 1
-// while(i <= 10) {
-//   if(i % 2 !== 0) {
-//     console.log(i)
-//   }
-//   i++
+// const circle1 = createCircle(1, 5, 20)
+// const circle2 = createCircle(5, 10, 50)
+// console.log(circle1, circle2)
+
+
+// Constructor function
+// // Convention
+// Camel Notation -> createCircle -> factory functions
+// Pascal Notation -> CreateCircle -> constructor function
+
+// function Circle(x, y, radius) {
+//   this.x = x
+//   this.y = y
+//   this.radius = radius
 // }
 
-
-// For in..example
-// const person = {
-//   name: 'Henry', // Key: value pair
-//   age: 30, // Key: value pair
-//   occupation: 'Actor' // Key: value pair
-// }
-
-// for(let key in person) {
-//   console.log(key, person[key])
-// }
+// const circle1 = new Circle(1,2, 15)
+// console.log(circle1)
 
 
-// // For in using arrays
-// const colors = ['red', 'green', 'blue']
-// for (let index in colors) {
-//   console.log(colors[index])
-// }
+// Cloning an object
+// Example -> There are 3 ways: 
+let circle = {
+  x: 1,
+  y: 1,
+  radius: 15
+}
 
-// For of
-// const colors = ['red', 'green', 'blue']
-// for (let color of colors) {
-//   console.log(color)
-// }
-
-
-// Write a function that takes two parameters
-// And returns the maximum of two
-// max(1, 2) -> 2
-// ternary operator -> condition ? true : false
-// function max(a, b) {
-//   if(a === b) {
-//     return 'Both numbers are equal, please provide different numbers'
-//   }
-
-  // Check condition using normal if else
-  // if(a > b) {
-  //   return a
-  // } else {
-  //   return b
-  // }
-
-  // Check condition using ternary operator
-  // return a > b ? a : b
-// }
-
-// console.log(max(2,10))
-
-
-
-// Write a function that takes two paramters,
-// checkMode -> 2 paramters -> width, height
-// return -> whether this device is in landscape or portait mode.
-
-// function checkMode(width, height) {
-//   return width > height ? 'landscape' : 'portrait'
-// }
-
-// console.log(checkMode(1080, 1920))
-
-
-
-// Create a function that accepts one parameter -> number
-// If divisible by 3 -> Fizz
-// If divisible by 5 -> Buzz
-// If divisible by both 3 & 5 -> Fizz Buzz
-// If not divisible by both -> return that number
-// If not a number -> return 'Not a number'
-
-// function fizzbuzz(number) {
-//   // Check type
-//   if(typeof number !== 'number') {
-//     return 'Not a number'
-//   }
-
-//   if(number % 3 === 0 && number % 5 === 0) {
-//     return 'Fizz Buzz'
-//   }
-
-//   if(number % 3 === 0) {
-//     return 'Fizz'
-//   }
-
-//   if(number % 5 === 0) {
-//     return 'Buzz'
-//   }
-
-//   if(number % 3 !== 0 && number % 3 !== 0) {
-//     return number
-//   }
-// }
-
-// console.log(fizzbuzz('asdf'))
-// console.log(fizzbuzz(3))
-// console.log(fizzbuzz(5))
-// console.log(fizzbuzz(30))
-
-// // Another way
-// // If statements can run without braces {},
-// // If it has only one statement inside
-
-// function fizzbuzz(number) {
-//   // Check type
-//   if(typeof number !== 'number') 
-//     return 'Not a number'
-
-//   if(number % 3 === 0 && number % 5 === 0) 
-//     return 'Fizz Buzz'  
-
-//   if(number % 3 === 0) 
-//     return 'Fizz'
-
-//   if(number % 5 === 0) 
-//     return 'Buzz'
-
-//   if(number % 3 !== 0 && number % 3 !== 0) 
-//     return number
-// }
-
-
-
-// Exercise:
-// Create an object,
-const car = {
+let car = {
   name: 'BMW',
-  year: 1997,
-  engine: '5 Gears',
-  carColor: 'yellow',
-  variants: ['red', 'yellow', 'red']
+  make: 1997
 }
 
-// In key:value pair, if value is of type string, print key:value pair
-// Hint: for in...
-// Syntax: for(let variable in object_name) {...}
-for(let key in car) {
-  // console.log(car[key])
-  if(typeof car[key] === 'string') 
-    console.log(key, car[key])
+let another = {}
 
-  // OR,
-  // typeof car[key] === 'string' && console.log(key, car[key])
+// // 1st way
+// for(let key in circle) {
+//   // 1st loop:
+//   // another['x'] = 1
+//   // another['y'] = 1
+//   // another['radius'] = 15
+//   another[key] = circle[key]
+// }
+
+// // 2nd way
+// // Syntax, Object.assign(destination_object, source_object)
+// Object.assign(another, circle)
+
+// // 3rd way -> ES6 technique
+// another = {...circle, ...car}
+
+// console.log(another)
+
+
+
+
+// Built - in properties in JavaScript
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
+
+// Math
+// Math.random() -> random number between 0 and 1
+// Math.min(1,2,3,4,5) -> returns minimum value
+// Math.max(1,2,3,4,5) -> returns maximum value
+// Math.pow(2,3) -> (x,y) x to the power of y
+
+
+// String
+// const firstName = 'Henry'
+// const lastName = new String('Shrestha')
+// console.log(firstName, lastName)
+
+
+
+// Exericse 1
+// Create an address object
+// 1. using a factory function
+// 2. using a constructor function
+// function createAddress(...) { return {} }
+// function CreateAddress(...) {this....}
+
+// // Factory function
+// function createAddress(state, city, postal_code) {
+//   return {
+//     state: state,
+//     city: city,
+//     postal_code: postal_code
+//   }
+// }
+
+// const address1 = createAddress('New Jersy', 'Newark', '07101')
+// const address2 = createAddress('New York', 'Manhattan', '10003')
+// console.log(address1, address2)
+
+
+// Constructor function -> Pascal Notation
+function CreateAddress(state, city, postal_code) {
+  this.state = state
+  this.city = city
+  this.postal_code = postal_code
+  // return this;
 }
 
+let address1 = new CreateAddress('New Jersy', 'Newark', '07101')
+let address2 = new CreateAddress('New York', 'Manhattan', '10003')
+let address3 = new CreateAddress('New York', 'Manhattan', '10003')
 
-// Assignment:
-// In this exercise, you will be given a variable, it will be called: age
-// You are also given another variable called: typeOfLicense;
-// Using an if/else if/else statement assign typeOfLicense to:
-// 'Full License' if age is greater than or equal to 16,
-// 'Permit' if age is equal to 15,
-// 'None' if age is less than 15
+let address4 = address1
 
 
+// Exercise #2
+// Create a new function
+// areSame(a, b) -> if both of these objects are same
+// -> if all the properties and values of
+// both the objects are same
+
+// areEqual(a,b) -> 
+// if both of these objects belong to the 
+// same memory location
+
+// Are same
+// function areSame(a, b) {
+//   // if(a.state === b.state && a.city === b.city && a.postal_code === b.postal_code) {
+//   //   return true
+//   // } else {
+//   //   return false
+//   // }
+
+//   // OR
+
+//   return a.state === b.state && a.city === b.city && a.postal_code === b.postal_code ? true : false
+// }
+
+// OR, can decalre in ES6 like:
+// const areSame = (a,b) => a.state === b.state && a.city === b.city && a.postal_code === b.postal_code ? true : false
+
+// console.log(areSame(address1, address2)) // false
+// console.log(areSame(address2, address3)) // true
+
+// // Are Equal
+// // function areEqual(a, b) {
+//   // if(a === b) {
+//   //   return true
+//   // } else {
+//   //   return false
+//   // }
+
+//   // return a === b ? true : false // Ternary operator
+// // }
+
+// // OR,
+
+// // const areEqual = (a,b) => {
+// //   return a === b ? true : false // Ternary operator
+// // }
+
+// const areEqual = (a,b) => a === b ? true : false // Ternary operator
+
+
+// console.log(areEqual(address1, address4)) // false
 
 
 
 
+// Exercise #3
+// Create a blog post object that has the following properties.
+// title
+// body
+// author
+// views -> view count
+// comments -> multiple comment objects that has author & body []
+// isLive -> boolean -> true / false
+
+// Advanced: create this using a Post constructor function and add new property:
+// date -> which is set to current date.
+// bonus -> format date in yyyy-mm-dd
+
+const blog = {
+  title: 'Some title',
+  body: 'This is the body of this blog',
+  author: 'Henry Shrestha',
+  views: 200,
+  comments: [
+    {
+      author: 'Some guy',
+      comment: 'This is a good blog'
+    },
+    {
+      author: 'Some girl',
+      comment: 'This is a bad blog'
+    },
+  ],
+  isLive: true
+}
+
+// console.log(blog)
 
 
+// Using constructor function
+function Posts(title, body, author) {
+  let today = new Date()
+  let formattedDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
 
+  this.title = title;
+  this.body = body;
+  this.author = author;
+  this.views = 0;
+  this.comments = [];
+  this.isLive = false
+  this.date = formattedDate
+}
 
+// Create blog with this constructor function
+const myNewBlog = new Posts('Some title', 'This is the body of this blog', 'Henry Shrestha')
+console.log(myNewBlog)
 
 
 
