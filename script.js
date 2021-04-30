@@ -1,258 +1,229 @@
-// // Traditional way
-// let radius = 1
-// let x = 1
-// let y = 1
+// 30Th April
 
-// // Objects
-// let circle1 = {
-//   radius: 1,
-//   x: 1,
-//   y: 1,
-//   // If a function does not return anything,
-//   // the result is undefined
-//   draw: function() {
-//     console.log("Draw")
-//     // changes
-//   },
-//   move: function() {
-//     console.log("Draw")
+// Array.push
+// let numbers = [1,2]
+// numbers.push(3,4)
+// numbers.push(5,6,7,8,2)
+
+
+
+// // Array.unshift
+// numbers.unshift(0)
+
+// // Array.splice
+// // (startIndex, number to remove, .... elements)
+// numbers.splice(3, 0, 'apple', 'orange')
+
+// // console.log(numbers)
+
+
+// // Array.indexOf -> returns the index of
+// // where the element exists in the array
+// let indexOf7 = numbers.indexOf('orange')
+// // console.log(indexOf7)
+
+// // Array.lastIndexOf 
+// // Returns the last known position of the 
+// // specified element in the array
+// let lastIndexOf2 = numbers.lastIndexOf(2)
+// // console.log(lastIndexOf2)
+
+// // Array.includes
+// // Returns whether the element exists or not
+// // true / false
+// let includesOrange = numbers.includes(100)
+// // console.log(includesOrange)
+
+
+// // Array.findIndex
+// let orangeIndex = numbers.findIndex(function(number) {
+//   return number === 'orange'
+// })
+
+// console.log(numbers, orangeIndex)
+
+
+// Finding reference types in an array
+// Array.find
+// We can find the reference value in 
+// an array 
+let courses = [
+  {
+    id: 1,
+    name: 'a'
+  },
+  {
+    id: 2,
+    name: 'b'
+  }
+]
+
+// callback function -> regular function
+// const findingCourse = courses.find(function(course) {
+//   return course.id === 1
+// })
+
+// callback function -> arrow function
+// const findingCourse = courses.find((course) => {
+//   return course.id === 1
+// })
+
+// callback function -> arrow function -> optimized version of above
+// const findingCourse = courses.find(course => course.id === 2)
+
+// console.log(findingCourse)
+
+
+// Array.splice
+// Removes an element or multiple elements from an array from the 
+// specified index
+
+let numbersArray = [1,2,3,4,5,6]
+
+// Returns the removed elements from the array
+// const removeNumbers = numbersArray.splice(3, 2)
+
+// console.log(removeNumbers, numbersArray)
+
+
+
+
+// Removing elements from an array
+// 1st way -> fastest way and easiest 
+// numbersArray = []
+
+// 2nd way -> setting length to 0
+// numbersArray.length = 0
+
+// 3rd way -> using splice method
+// numbersArray.splice(0, numbers.length)
+
+// 4th way
+// while(numbersArray.length > 0) {
+//   numbersArray.pop()
+// }
+
+
+// Combining arrays
+// let cars = ['BMW', 'Lexus', 'Tesla', 'Toyota']
+// let year = [1995, 1997, 2015, 2021]
+// let numbers = [1,2,3,4,5]
+// let fruits = ['appple', 'banana', 'mango']
+
+// // Combine year, numbers and fruits in the cars Array
+// // let combinedArray = cars.concat(year, numbers, fruits)
+
+
+// // Combine year, numbers and fruits in the cars Array using ES6 - 2015
+// let combinedArray = [...cars, ...year] // I think this is the easiest way
+
+// console.log(combinedArray)
+
+
+
+
+// Slicing an array
+// let cars = ['BMW', 'Lexus', 'Tesla', 'Toyota']
+
+// // We can copy /clone an array
+// let copiedCars = cars.slice()
+// console.log(copiedCars)
+
+// We can copy the portion of an array
+// let copiedPortion = cars.slice(0,2)
+// console.log(cars, copiedPortion, cars)
+
+
+// Exercise
+const numbers = [1,2,3,4]
+// numbers.forEach(function(number) {
+//   console.log(number)
+// })
+
+// Convert this to ES6 arrow function
+// Hint: () => {...}
+// function() {...}
+// numbers.forEach(number => {
+//   console.log(number)
+// })
+
+//numbers.forEach(number => console.log(number))
+
+
+// Get the index of the elements as well
+// let cars = ['BMW', 'Lexus', 'Tesla', 'Toyota']
+// cars.forEach(function(value, index) {
+//   console.log(value, index)
+// })
+
+// Using ES6 arrow function
+// cars.forEach((value, index) => console.log(value, index))
+
+
+// Array join
+// let cars = ['BMW', 'Lexus', 'Tesla', 'Toyota']
+// console.log(cars.join()) // By Default, array elements are joined by comma (,)
+// console.log(cars.join(',')) 
+// console.log(cars.join(', ')) 
+// console.log(cars.join('|')) 
+
+
+// Array split
+// let cars = ['BMW', 'Lexus', 'Tesla', 'Toyota']
+// let joinedCars = cars.join('|') // By Default, array elements are joined by comma (,)
+
+// let splittedCars = joinedCars.split('|')
+// console.log(splittedCars)
+
+
+// Exercise:
+
+// Prints all the elements from start to end
+// Eg: arrayFromRange(1, 5) -> 1,2,3,4,5 
+function arrayFromRange(start, end) {
+  for(let i = start; i <= end; i++) {
+    console.log(i)
+  }
+} 
+
+const numbersInRange = arrayFromRange(1,100)
+console.log(numbersInRange)
+
+
+// Alternative -> Uusing Array.push()
+// let arr = []
+// function arrayFromRange(start, end) {
+//   for(let i = start; i <= end; i++) {
+//     arr.push(i)
 //   }
+// } 
+// arrayFromRange(1,100)
+
+// // Loop arr
+// for(let element of arr) {
+//   console.log(element)
 // }
 
 
-// // Factory functions
-// function createCircle(x, y, radius) {
-//   // Static data
-//   return {
-//     radius: radius,
-//     x: x,
-//     y: y,
-//     // If a function does not return anything,
-//     // the result is undefined
-//     draw: function() {
-//       console.log("Draw")
-//       // changes
-//     },
-//     move: function() {
-//       console.log("Draw")
-//     }
-//   }
-// }
 
-// const circle1 = createCircle(1, 5, 20)
-// const circle2 = createCircle(5, 10, 50)
-// console.log(circle1, circle2)
+// Exercise 2:
+const numbers = [1,2,3,4,1,1]
 
-
-// Constructor function
-// // Convention
-// Camel Notation -> createCircle -> factory functions
-// Pascal Notation -> CreateCircle -> constructor function
-
-// function Circle(x, y, radius) {
-//   this.x = x
-//   this.y = y
-//   this.radius = radius
-// }
-
-// const circle1 = new Circle(1,2, 15)
-// console.log(circle1)
-
-
-// Cloning an object
-// Example -> There are 3 ways: 
-let circle = {
-  x: 1,
-  y: 1,
-  radius: 15
+function except(array, excluded) {
+  // Write your code...
 }
 
-let car = {
-  name: 'BMW',
-  make: 1997
-}
-
-let another = {}
-
-// // 1st way
-// for(let key in circle) {
-//   // 1st loop:
-//   // another['x'] = 1
-//   // another['y'] = 1
-//   // another['radius'] = 15
-//   another[key] = circle[key]
-// }
-
-// // 2nd way
-// // Syntax, Object.assign(destination_object, source_object)
-// Object.assign(another, circle)
-
-// // 3rd way -> ES6 technique
-// another = {...circle, ...car}
-
-// console.log(another)
+const excludedNumbers = except(numbers, [1,2]) 
+console.log(excludedNumbers) // Result => [3,4]
 
 
 
 
-// Built - in properties in JavaScript
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
-
-// Math
-// Math.random() -> random number between 0 and 1
-// Math.min(1,2,3,4,5) -> returns minimum value
-// Math.max(1,2,3,4,5) -> returns maximum value
-// Math.pow(2,3) -> (x,y) x to the power of y
-
-
-// String
-// const firstName = 'Henry'
-// const lastName = new String('Shrestha')
-// console.log(firstName, lastName)
-
-
-
-// Exericse 1
-// Create an address object
-// 1. using a factory function
-// 2. using a constructor function
-// function createAddress(...) { return {} }
-// function CreateAddress(...) {this....}
-
-// // Factory function
-// function createAddress(state, city, postal_code) {
-//   return {
-//     state: state,
-//     city: city,
-//     postal_code: postal_code
-//   }
-// }
-
-// const address1 = createAddress('New Jersy', 'Newark', '07101')
-// const address2 = createAddress('New York', 'Manhattan', '10003')
-// console.log(address1, address2)
-
-
-// Constructor function -> Pascal Notation
-function CreateAddress(state, city, postal_code) {
-  this.state = state
-  this.city = city
-  this.postal_code = postal_code
-  // return this;
-}
-
-let address1 = new CreateAddress('New Jersy', 'Newark', '07101')
-let address2 = new CreateAddress('New York', 'Manhattan', '10003')
-let address3 = new CreateAddress('New York', 'Manhattan', '10003')
-
-let address4 = address1
-
-
-// Exercise #2
-// Create a new function
-// areSame(a, b) -> if both of these objects are same
-// -> if all the properties and values of
-// both the objects are same
-
-// areEqual(a,b) -> 
-// if both of these objects belong to the 
-// same memory location
-
-// Are same
-// function areSame(a, b) {
-//   // if(a.state === b.state && a.city === b.city && a.postal_code === b.postal_code) {
-//   //   return true
-//   // } else {
-//   //   return false
-//   // }
-
-//   // OR
-
-//   return a.state === b.state && a.city === b.city && a.postal_code === b.postal_code ? true : false
-// }
-
-// OR, can decalre in ES6 like:
-// const areSame = (a,b) => a.state === b.state && a.city === b.city && a.postal_code === b.postal_code ? true : false
-
-// console.log(areSame(address1, address2)) // false
-// console.log(areSame(address2, address3)) // true
-
-// // Are Equal
-// // function areEqual(a, b) {
-//   // if(a === b) {
-//   //   return true
-//   // } else {
-//   //   return false
-//   // }
-
-//   // return a === b ? true : false // Ternary operator
-// // }
-
-// // OR,
-
-// // const areEqual = (a,b) => {
-// //   return a === b ? true : false // Ternary operator
-// // }
-
-// const areEqual = (a,b) => a === b ? true : false // Ternary operator
-
-
-// console.log(areEqual(address1, address4)) // false
 
 
 
 
-// Exercise #3
-// Create a blog post object that has the following properties.
-// title
-// body
-// author
-// views -> view count
-// comments -> multiple comment objects that has author & body []
-// isLive -> boolean -> true / false
 
-// Advanced: create this using a Post constructor function and add new property:
-// date -> which is set to current date.
-// bonus -> format date in yyyy-mm-dd
-
-const blog = {
-  title: 'Some title',
-  body: 'This is the body of this blog',
-  author: 'Henry Shrestha',
-  views: 200,
-  comments: [
-    {
-      author: 'Some guy',
-      comment: 'This is a good blog'
-    },
-    {
-      author: 'Some girl',
-      comment: 'This is a bad blog'
-    },
-  ],
-  isLive: true
-}
-
-// console.log(blog)
-
-
-// Using constructor function
-function Posts(title, body, author) {
-  let today = new Date()
-  let formattedDate = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
-
-  this.title = title;
-  this.body = body;
-  this.author = author;
-  this.views = 0;
-  this.comments = [];
-  this.isLive = false
-  this.date = formattedDate
-}
-
-// Create blog with this constructor function
-const myNewBlog = new Posts('Some title', 'This is the body of this blog', 'Henry Shrestha')
-console.log(myNewBlog)
 
 
 
