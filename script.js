@@ -1,233 +1,280 @@
-// 30Th April
+// Using sort
+// let numbers = [5,3,4,1,9,10]
 
-// Array.push
-// let numbers = [1,2]
-// numbers.push(3,4)
-// numbers.push(5,6,7,8,2)
+// let ascSortedNumbers =  numbers.sort()
 
-
-
-// // Array.unshift
-// numbers.unshift(0)
-
-// // Array.splice
-// // (startIndex, number to remove, .... elements)
-// numbers.splice(3, 0, 'apple', 'orange')
-
-// // console.log(numbers)
+// for(let element of numbers) {
+//   console.log(element, ' ', element.toString().charCodeAt(0))
+// }
 
 
-// // Array.indexOf -> returns the index of
-// // where the element exists in the array
-// let indexOf7 = numbers.indexOf('orange')
-// // console.log(indexOf7)
+// let letters = ['a', 'z', 'c', 'd']
+// let ascSortedLetters = letters.sort()
+// let descSortedLetters = letters.reverse()
+// console.log(ascSortedLetters, descSortedLetters)
 
-// // Array.lastIndexOf 
-// // Returns the last known position of the 
-// // specified element in the array
-// let lastIndexOf2 = numbers.lastIndexOf(2)
-// // console.log(lastIndexOf2)
-
-// // Array.includes
-// // Returns whether the element exists or not
-// // true / false
-// let includesOrange = numbers.includes(100)
-// // console.log(includesOrange)
+// let descSortedNumbers = numbers.reverse()
+// console.log(ascSortedNumbers)
 
 
-// // Array.findIndex
-// let orangeIndex = numbers.findIndex(function(number) {
-//   return number === 'orange'
+// Using comparison function
+// let numbers = [5,3,4,1,9,10]
+
+// // Ascending sort
+// let sortedNumbers = numbers.sort(function(a, b) {
+//   if(a < b) return -1
+//   if(a > b) return 1
+//   else return 0
 // })
 
-// console.log(numbers, orangeIndex)
+// Asc
+// let sortedNumbers = numbers.sort(function(a, b) {
+//   return a - b
+// })
+
+// // ES6 - Asc
+// let ascEs6SortedNumbers = [...numbers].sort((a,b) => a - b)
+// let descEs6SortedNumbers = [...numbers].sort((a,b) => b - a)
+
+// console.log(ascEs6SortedNumbers, descEs6SortedNumbers)
 
 
-// Finding reference types in an array
-// Array.find
-// We can find the reference value in 
-// an array 
-let courses = [
+const cars = [
   {
-    id: 1,
-    name: 'a'
+    name: 'BMW',
+    year: 1997,
   },
   {
-    id: 2,
-    name: 'b'
-  }
+    name: 'toyota',
+    year: 2021
+  },
+  {
+    name: 'Volkswagon',
+    year: 1995
+  },
+  {
+    name: 'Tesla',
+    year: 1980
+  },
 ]
 
-// callback function -> regular function
-// const findingCourse = courses.find(function(course) {
-//   return course.id === 1
+// Sort by year
+// let ascSortedCars = cars.sort((a,b) => b.year - a.year)
+
+// Sort by car name ascending
+// let ascSortedCarsByName = cars.sort((a, b) => {
+//   if(a.name < b.name) return -1
+//   if(a.name > b.name) return 1
+//   else return 0
+// })
+// console.log(ascSortedCarsByName)
+
+// Sort by car name descending
+// let descSortedCarsByName = cars.sort((a, b) => {
+//   if(a.name < b.name) return 1
+//   if(a.name > b.name) return -1
+//   else return 0
 // })
 
-// callback function -> arrow function
-// const findingCourse = courses.find((course) => {
-//   return course.id === 1
+// console.log(descSortedCarsByName)
+
+
+// Solve ASCII issue
+// We convert the string that we compare to lower case / to upper case.
+// let ascSortedCarsByName = cars.sort((a, b) => {
+//   let carA = a.name.toLowerCase()
+//   let carB = b.name.toLowerCase()
+//   if(carA < carB) return -1
+//   if(carA > carB) return 1
+//   else return 0
 // })
 
-// callback function -> arrow function -> optimized version of above
-// const findingCourse = courses.find(course => course.id === 2)
-
-// console.log(findingCourse)
+// console.log(ascSortedCarsByName)
 
 
-// Array.splice
-// Removes an element or multiple elements from an array from the 
-// specified index
+// Testing array
+// Array.every()
+// let numbers = [1,2,3,4,5,-1]
 
-let numbersArray = [1,2,3,4,5,6]
+// let testIfGtThanZero = numbers.every(function(number) {
+//   return number >= 0
+// })
+// console.log(testIfGtThanZero)
 
-// Returns the removed elements from the array
-// const removeNumbers = numbersArray.splice(3, 2)
-
-// console.log(removeNumbers, numbersArray)
-
-
-
-
-// Removing elements from an array
-// 1st way -> fastest way and easiest 
-// numbersArray = []
-
-// 2nd way -> setting length to 0
-// numbersArray.length = 0
-
-// 3rd way -> using splice method
-// numbersArray.splice(0, numbers.length)
-
-// 4th way
-// while(numbersArray.length > 0) {
-//   numbersArray.pop()
-// }
-
-
-// Combining arrays
-// let cars = ['BMW', 'Lexus', 'Tesla', 'Toyota']
-// let year = [1995, 1997, 2015, 2021]
-// let numbers = [1,2,3,4,5]
-// let fruits = ['appple', 'banana', 'mango']
-
-// // Combine year, numbers and fruits in the cars Array
-// // let combinedArray = cars.concat(year, numbers, fruits)
-
-
-// // Combine year, numbers and fruits in the cars Array using ES6 - 2015
-// let combinedArray = [...cars, ...year] // I think this is the easiest way
-
-// console.log(combinedArray)
-
-
-
-
-// Slicing an array
-// let cars = ['BMW', 'Lexus', 'Tesla', 'Toyota']
-
-// // We can copy /clone an array
-// let copiedCars = cars.slice()
-// console.log(copiedCars)
-
-// We can copy the portion of an array
-// let copiedPortion = cars.slice(0,2)
-// console.log(cars, copiedPortion, cars)
-
-
-// Exercise
-const numbers = [1,2,3,4]
-// numbers.forEach(function(number) {
-//   console.log(number)
+// Array.some()
+// let numbers = [-1,2,3,4,5,-1]
+// let testIfGtThanZero = numbers.some(function(number) {
+//   return number >= 0
 // })
 
-// Convert this to ES6 arrow function
-// Hint: () => {...}
-// function() {...}
-// numbers.forEach(number => {
-//   console.log(number)
+// console.log(testIfGtThanZero)
+
+
+// Let's filter the numbers which are greater than 5
+// let numbers = [1,2,3,4,5,6,7,9]
+// // let filteredNumbers = numbers.filter(function(number) {
+// //   return number > 5
+// // })
+
+// let filteredNumbers = numbers.filter((number) => number > 5)
+
+// console.log(filteredNumbers)
+
+
+
+
+// Restaurants list JSON
+const restaurantList = [
+  {
+    name: 'X & Y Restaurant',
+    open: false
+  },
+  {
+    name: 'Belwood Restaurant',
+    open: true
+  },
+  {
+    name: "Mama Hong's Restaurant",
+    open: true
+  },
+  {
+    name: 'Tom Restaurant',
+    open: false
+  },
+]
+
+
+// Get all the restaurants that are open
+// let openRestaurants = restaurantList.filter((restaurant) => restaurant.open)
+// let closedRestaurants = restaurantList.filter((restaurant) => !restaurant.open)
+
+// console.log(openRestaurants, closedRestaurants)
+
+
+// let numbers = [1,2,3,4,5,-1]
+
+// let filterdNumbers = numbers.filter(n => n >= 0) // [1,2,3,4,5]
+
+
+// let numbersMapped = filterdNumbers.map(function(n) {
+//   return `<li>${n}</li>` // Template literal
+//   // return '<li>' + n + '</li>'
 // })
 
-//numbers.forEach(number => console.log(number))
+// console.log(filterdNumbers, numbersMapped)
 
 
-// Get the index of the elements as well
-// let cars = ['BMW', 'Lexus', 'Tesla', 'Toyota']
-// cars.forEach(function(value, index) {
-//   console.log(value, index)
+// Multiply each filtered numbers by 5
+// 1st -> number -> 1 -> 1 * 5 = 5 -> [5]
+// 2nd -> number -> 2 -> 2 * 5 = 10 -> [5, 10]
+// 3rd -> number -> 3 -> 3 * 5 = 15 -> [5, 10, 15]
+// ...
+// 5th -> number -> 5 -> 5 * 5 = 25 -> [5, 10, 15, 20, 25]
+
+// let multipliedByFive = filterdNumbers.map(number => {
+//   return number * 5
 // })
 
-// Using ES6 arrow function
-// cars.forEach((value, index) => console.log(value, index))
+// console.log(multipliedByFive)
 
 
-// Array join
-// let cars = ['BMW', 'Lexus', 'Tesla', 'Toyota']
-// console.log(cars.join()) // By Default, array elements are joined by comma (,)
-// console.log(cars.join(',')) 
-// console.log(cars.join(', ')) 
-// console.log(cars.join('|')) 
+// Reduce
+// Get the multiplication of all the numbers in an array
+
+// let reduceTestArray = [2,3,4,5,6]
+
+// let multipliedNumber = reduceTestArray.reduce(function(accumulator, currentValue) {
+//   return accumulator + currentValue
+// }, 0)
+
+// console.log(multipliedNumber)
 
 
-// Array split
-// let cars = ['BMW', 'Lexus', 'Tesla', 'Toyota']
-// let joinedCars = cars.join('|') // By Default, array elements are joined by comma (,)
 
-// let splittedCars = joinedCars.split('|')
-// console.log(splittedCars)
+// Count the number of occurences of a search element in an array
 
+// function countOccurences(array, searchElement) {
+//   let occurence = 0
 
-// Exercise:
-
-// Prints all the elements from start to end
-// Eg: arrayFromRange(1, 5) -> 1,2,3,4,5 
-function arrayFromRange(start, end) {
-  for(let i = start; i <= end; i++) {
-    console.log(i)
-  }
-} 
-
-const numbersInRange = arrayFromRange(1,100)
-console.log(numbersInRange)
-
-
-// Alternative -> Uusing Array.push()
-// let arr = []
-// function arrayFromRange(start, end) {
-//   for(let i = start; i <= end; i++) {
-//     arr.push(i)
+//   // Loop inside the array
+//   for(let element of array) {
+//     // if(searchElement === element) occurence++
+//     // OR, use AND operator
+//     searchElement === element && occurence++
 //   }
-// } 
-// arrayFromRange(1,100)
 
-// // Loop arr
-// for(let element of arr) {
-//   console.log(element)
+//   return occurence
 // }
 
+// const numbers = [1,2,3,4,1,1,1,1,2,2,2]
+// const numberOneOccurence = countOccurences(numbers, 2)
+// console.log(numberOneOccurence)
 
 
-// Exercise 2:
-const numbers = [1,2,3,4,1,1]
 
-function except(array, excluded) {
-  // Write your code...
+
+// 10 mins.
+// Given an array of people objects, return a new array that has filtered out 
+// all those who don't belong to the club.
+
+// function peopleWhoBelongToTheIlluminati(arr){
+//   return arr.filter(person => person.member)
+//   // return arr.filter(person => {
+//   //   return person.member === true
+//   // })
+// }
+// // test
+// const peopleInAllGroups = [
+//   { name: "Angelina Jolie", member: true },
+//   { name: "Eric Jones", member: false },
+//   { name: "Paris Hilton", member: true },
+//   { name: "Kayne West", member: false },
+//   { name: "Bob Ziroll", member: true }
+// ]
+// console.log(peopleWhoBelongToTheIlluminati(peopleInAllGroups));
+
+
+
+// 2) Capitalize each of an array of names
+// function capitalizeNames(arr){
+//   let capitalNames = arr.map(name => {
+//     // console.log(name, ' ', name.charAt(0), name.charAt(0).toUpperCase(), name.slice(1).toLowerCase())
+//     let firstCharacter = name.charAt(0).toUpperCase()
+//     let remainingCharacters = name.slice(1).toLowerCase()
+//     return firstCharacter + remainingCharacters
+//   })
+
+//   return capitalNames
+// }
+
+// Using for loop
+function capitalizeNames(arr){
+  let capitalizedArray = []
+  for(let value of arr){
+      capitalizedArray.push(`${value.charAt(0).toUpperCase()}${value.slice(1).toLowerCase()}`)
+  }
+  return capitalizedArray
 }
 
-const excludedNumbers = except(numbers, [1,2]) 
-console.log(excludedNumbers) // Result => [3,4]
+let array = ["john", "JACOB", "jinGleHeimer", "schmidt"] // John
+console.log(capitalizeNames(array))
+
+
+// 3) Make an array of numbers that are doubles of the first array
+function doubleNumbers(arr){
+  // ES6
+  return arr.map(num => num * 2)
+  // return arr.map(function(num) {
+  //   return num * 2
+  // })
+}
+
+console.log(doubleNumbers([2, 5, 100])); // [4, 10, 200]
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Functions
+// let vs var
+// Hoisting
+// Try catch
+// Local vs global scope - Scoping
