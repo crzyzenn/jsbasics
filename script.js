@@ -1,222 +1,208 @@
-// // Function declaration
-
-// run()
-
-// // Declaration
-// function run() {
-//   console.log("Running")
-// }
-
-// runFunction() // Does not work because JS engine does not hoist fn expressions
-
-// // Expression
-// const runFunction = () => {
-//   console.log("Running")
-// }
+// 6th May
 
 
-
-
-
-// Arguments
-// Get the toal sum of all the arguments passed to the function
-// function sum() {
-//   console.log(arguments)
-//   let total = 0
-
-//   // Run a loop through the in-built arguments object
-//   for(let number of arguments) {
-//     total += number
+// const user = {
+//   name: 'Normal User',
+//   age: 30,
+//   sayHi() {
+//     return this.name
 //   }
+// }
+// console.log(user.sayHi())
 
-//   return total
+
+// JS, evaluates this during runtime depending on the context
+// const user = {
+//   name: 'Normal User',
+//   age: 30,
+// }
+// const admin = {
+//   name: 'Admin user',
+//   age: 30,
 // }
 
-// const allNumbersSum = sum(1,2,3,4,5,6,7,8,9,10)
-// console.log(allNumbersSum)
-
-
-// Rest operator
-// Calculate the multiplication of all the arguments in the function
-// function multiply(...args) {
-//   let total = 1
-
-//   // Run a loop through the in-built arguments object
-//   for(let number of args) {
-//     total *= number
-//   }
-
-//   return total
-// }
-// const allNumbersMultiply = multiply(1,2,3,4,5,6,7,8,9,10)
-// console.log(allNumbersMultiply)
-
-
-// Default parameters
-// function sum(a,b,c = 5) {
-//   // c = c || 5 -> use a default value
-//   return a + b + c
+// function sayHi() {
+//   return this.name
 // }
 
-// const sumOfThree = sum(1,2)
-// console.log(sumOfThree)
+// user.fn = sayHi;
+// admin.fn = sayHi;
+
+// console.log(user.fn())
+// console.log(admin.fn())
 
 
-
-// // Getters and setters
-// let user = {
-//   firstName: 'John',
-//   lastName: 'Smith',
-//   // Getter function
-//   get fullName() {
-//     return `${this.firstName} ${this.lastName}`
-//   },
-//   set fullName(name) {
-//     // this.firstName = name.split(' ')[0]
-//     // this.lastName = name.split(' ')[1]
-
-//     // ES6 array destructuring
-//     // [first, last] = name.split(' ')
-//     // this.firstName = first
-//     // this.lastName = last
-
-//     [this.firstName, this.lastName] = name.split(' ')
+// Changing the value of this using 2nd arugment 
+// in forEach fn
+// const video = {
+//   title: 'Intro to JS',
+//   tags: ['a', 'b', 'c', 'd'],
+//   showTags() {
+//     // forEach(callback fn, value of 'this')
+//     this.tags.forEach(function(tag) {
+//       console.log(this.title, tag)
+//     }, this) 
 //   }
 // }
 
-// user.fullName = 'Henry Shrestha'
-
-// console.log(user)
+// console.log(video.showTags())
 
 
+// However, not all in built fns provide a 2nd arugment 
+// to change the value of 'this'
+// So to solve this problem, we assign a temporary 
+// variable to this called 'self' or anything u want
 
-// // Try Catch
-// function sum(a,b) {
-//   // Using try catch
-//   try {
-//     if(typeof a !== 'number' || typeof b !== 'number') 
-//       throw 'A and B are not numbers'
-
-//     return a+b
-    
-//   } catch(error) {
-//     console.log(error)
+// const video = {
+//   title: 'Intro to JS',
+//   tags: ['a', 'b', 'c', 'd'],
+//   showTags() {
+//     let self = this
+//     // forEach(callback fn, value of 'this')
+//     this.tags.forEach(function(tag) {
+//       console.log(self.title, tag)
+//     }) 
 //   }
 // }
 
-// // Try catch example
-// function getCapitalWord(word) {
-//   // Using try catch
-//   try {
-//     return word.toUpperCase()
-//   } catch(error) {
-//     console.log('An error has occured ', error)
+// console.log(video.showTags())
+
+
+// // Another solution, is to use bind
+// const video = {
+//   title: 'Intro to JS',
+//   tags: ['a', 'b', 'c', 'd'],
+//   showTags() {
+//     this.tags.forEach(function(tag) {
+//       console.log(this.title, tag)
+//     }.bind(this)) 
 //   }
 // }
 
-// console.log(getCapitalWord(1))
+// console.log(video.showTags())
 
 
-// console.log("This code still runs and does not break")
-
-
-// Exercise
-// Getters and Setters
-// let person = {
-//   firstName: "John",
-//   lastName : "Doe",
-//   language : "en",
-//   get detail() {
-//     return `My name is ${this.firstName} ${this.lastName}, and my language is ${this.language}.`
-//   },
-//   set detail(detail) {
-//     [this.firstName, this.lastName, this.language] = detail.split(' ')
+// // Best solution to this problem, is to use arrow functions
+// const video = {
+//   title: 'Intro to JS',
+//   tags: ['a', 'b', 'c', 'd'],
+//   showTags() {
+//     this.tags.forEach((tag) => {
+//       console.log(this.title, tag)
+//     }) 
 //   }
 // }
 
-// console.log(person.detail)
-// person.detail = 'Mark Fisherman np'
-
-// console.log(person.detail)
-
-
-// Arguments
-// Write a function that returns all the odd numbers from arguments
-// either use argument object inside function,
-// or use ...rest operator
-// function getOddNumbers(...args) {
-//   let arr = []
-  
-//   for(let number of args) {
-//     if(number % 2 === 1) 
-//       arr.push(number)
-//   }
-
-//   return {array: arr, string: arr.join()}
-// }
-
-// const oddNumbers = getOddNumbers(1,2,3,4,5)
-// console.log(oddNumbers) // [1,3,5]
-// Extra: 1,3,5
-
-
-
-// Using array.filter
-// function getOddNumber(...args) {
-//     let value = args.filter(args => args % 2)
-//     return value
-// }
-// const oddNumbers = getOddNumber(1, 2, 3, 4, 5)
-// console.log(oddNumbers)
+// console.log(video.showTags())
 
 
 
 
+// Revision with exercises:
 
-// Search a blog by title
-// use Array.filter()
-// String.indexOf(searchValue) -> returns index || -1
-const blogPosts = [
+const movies = [
   {
-    id: 1,
-    title: 'Way of life',
-    description: 'This is a description' 
+    title: 'a', year: 2018, rating: 4.5
   },
   {
-    id: 2,
-    title: 'Intro to Vue JS',
-    description: 'This is a description' 
+    title: 'b', year: 2018, rating: 4.7
   },
   {
-    id: 3,
-    title: 'Intro to React using Next.js',
-    description: 'This is a description' 
-  }
+    title: 'c', year: 2018, rating: 3
+  },
+  {
+    title: 'd', year: 2017, rating: 4.5
+  },
+  {
+    title: 'e', year: 2018, rating: 4.1
+  },
+  {
+    title: 'f', year: 2017, rating: 4.5
+  },
 ]
 
-function searchBlog(blog, query) {
-  return blog.filter(b => {
-    let title = b.title.toLowerCase()
-    let q = query.toLowerCase()
+// All the movies in 2018 with rating > 4
+// Sort them by their rating -> descending order and pick their
+// title
 
-    return title.indexOf(q) !== -1
-  })
-}
+// Hint: movies.filter().sort().map()
 
-const searchedBlog = searchBlog(blogPosts, 'next')
+// console.log(movies.filter(movie => movie.year === 2018 && movie.rating > 4)
+//                   .sort((a, b) => a.rating - b.rating)
+//                   .map(movie => movie.title))
 
-console.log(searchedBlog)
-// {
-//   id: 2,
-//   title: 'Intro to Vue JS',
-//   description: 'This is a description' 
-// },
-// {
-//   id: 3,
-//   title: 'Intro to React using Next.js',
-//   description: 'This is a description' 
+
+
+// Write a program to print the current time every second
+
+// setInterval(()=>{
+//   let today = new Date()
+//   // console.log(`The current time is: ${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`);
+//   console.log(`The current time is: ${today.toLocaleTimeString()}`);
+// },1000)
+
+
+// Write a JavaScript fn -> 
+// formatString(string, capitalize = true / false)
+// ->true first letter is capital followed by the rest small letters
+// ->false first letter is small followed by the rest small letters
+
+// formatString('hELLO world', false) // -> hello world
+// formatString('hELLO world', true) // -> Hello world
+
+
+// const formatString = (string, capitalize)=>{
+//     // if (capitalize){
+//     //     return string.charAt(0).toUpperCase()+string.slice(1).toLowerCase();
+//     // } else{
+//     //     return string.toLowerCase();
+//     // }
+
+//     // Using ES6 destructuring
+//     [firstLetter, ...restLetters] = string
+//     return capitalize ? firstLetter.toUpperCase()+restLetters.join('').toLowerCase() 
+//                       : firstLetter.toLowerCase()+restLetters.join('').toLowerCase()
 // }
 
+// console.log(formatString("hello World", false));
 
 
+// Write a JavaScript program to get a random element from an array.
+
+// const arr = [1,2,3,4,5]
+
+// function getRandomElement(array) {
+//   let randomIndex = Math.floor(Math.random() * array.length) // Gets random number between 0 and array.length 5 -> 5 not included
+//   return array[randomIndex]
+// }
+
+// console.log(getRandomElement(arr)) // Print random element every time called.
+// // Hint - get random number between 0 and 4 -> Math.floor(Math.random() * 5)
+
+
+
+//  Write a JavaScript function to check whether an object contains given property.
+// And print the property and its value if it exists
+
+const person = {
+  firstName: 'Henry',
+  lastName: 'Lown',
+  age: 30,
+}
+
+function checkProperty(object, query) {
+  for(const key in object) {
+    // If exists return value
+    if(key === query) {
+      return `${query}: ${object[query]}`
+    }
+  }
+
+  return 'Property does not exist in the object'
+}
+
+console.log(checkProperty(person, 'firstName'))
+console.log(checkProperty(person, 'lastName'))
+console.log(checkProperty(person, 'age'))
+console.log(checkProperty(person, 'occupation'))
 
